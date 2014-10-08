@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 /**
@@ -49,8 +51,9 @@ public class ImageAdapter extends BaseAdapter {
         }
         ImageView imageView = (ImageView) grid.findViewById(R.id.grid_image);
 
-        int resId = context.getResources().getIdentifier(imageTitles.get(position), "drawable" ,context.getPackageName());
-        imageView.setImageResource(resId);
+        String url = imageTitles.get(position);
+
+        Picasso.with(context).load(url).into(imageView);
 
         return grid;
     }
